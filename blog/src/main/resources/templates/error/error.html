@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
+    <title>江南好，风景旧曾谙</title>
+</head>
+<body>
+
+
+<div class="ui grid stackable divided">
+    <!--导航-->
+    <div th:replace="_fragments :: menu()" >
+    </div>
+    <!--内容-->
+    <div class="twelve wide column">
+
+        <div class="m-container-small article-responsive " style="margin: 15em">
+            <div class="ui error message m-padded-tb-big" >
+                <div class="ui container">
+                    <h2>错误</h2>
+                    <p>服务异常，请联系管理员</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--空边-->
+    <div th:replace="_fragments :: right()" >
+    </div>
+</div>
+<th:block th:replace="_fragments :: script">
+</th:block>
+
+
+</body>
+</html>

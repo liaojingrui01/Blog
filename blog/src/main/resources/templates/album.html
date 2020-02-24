@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
+	<title>江南好，风景旧曾谙</title>
+</head>
+<body>
+
+
+<div class="ui grid stackable divided">
+	<!--导航-->
+	<div th:replace="_fragments :: menu()" >
+	</div>
+	<!--内容-->
+	<div class="twelve wide column">
+		<div id='wrapper'>
+			<div class='grid-wrapper'>
+
+				<div class='grid-item'>
+					<img src='../static/photos/01.jpg' th:src="@{/photos/01.jpg}">
+				</div>
+				<div class='grid-item'>
+					<img src='../static/photos/02.jpg' th:src="@{/photos/02.jpg}">
+				</div>
+				<div class='grid-item'>
+					<img src='../static/photos/03.jpg' th:src="@{/photos/03.jpg}">
+				</div>
+				<div class='grid-item'>
+					<img src='../static/photos/04.jpg' th:src="@{/photos/04.jpg}">
+				</div>
+				<div class='grid-item'>
+					<img src='../static/photos/05.jpg' th:src="@{/photos/05.jpg}">
+				</div>
+				<div class='grid-item'>
+					<img src='../static/photos/06.jpg' th:src="@{/photos/06.jpg}">
+				</div>
+				<div class='grid-item'>
+					<img src='../static/photos/07.jpg' th:src="@{/photos/07.jpg}">
+				</div>
+				<div class='grid-item'>
+					<img src='../static/photos/08.jpg' th:src="@{/photos/08.jpg}">
+				</div>
+				<div class='grid-item'>
+					<img src='../static/photos/09.jpg' th:src="@{/photos/09.jpg}">
+				</div>
+				<div class='grid-item'>
+					<img src='../static/photos/10.jpg' th:src="@{/photos/10.jpg}">
+				</div>
+				<div class='grid-item'>
+					<img src='../static/photos/11.jpg' th:src="@{/photos/11.jpg}">
+				</div>
+				<div class='grid-item'>
+					<img src='../static/photos/12.jpg' th:src="@{/photos/12.jpg}">
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+	<!--空边-->
+	<div th:replace="_fragments :: right()" >
+	</div>
+</div>
+
+<th:block th:replace="_fragments :: script">
+</th:block>
+</body>
+</html>

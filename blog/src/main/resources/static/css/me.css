@@ -1,0 +1,189 @@
+.mytable tr td {
+	/* for IE */
+	text-overflow: ellipsis;
+	/* for Firefox,mozilla */
+	-moz-text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	text-align: left
+}
+
+::-webkit-scrollbar {
+	display: none;
+} 
+nav{
+	position:fixed;
+	width:100%;
+	
+}
+
+
+.leftmenu_mulu {
+	font-size: 14px;
+}
+
+.leftmenu {
+	font-size: 16px;
+	color: cadetblue !important;
+}
+
+.username {
+	color: cadetblue !important;
+	font-size: 18px !important;
+}
+
+.m-container-small{
+	max-width: 50em !important;
+	margin: auto !important;
+}
+.m-container {
+	max-width: 80em !important;
+	margin: auto !important;
+}
+
+.m-padded-tb-mini {
+	padding-top: 0.2em !important;
+	padding-bottom: 0.2em !important;
+}
+
+.m-padded-tb-small {
+	padding-top: 0.5em !important;
+	padding-bottom: 0.5em !important;
+}
+
+.m-padded-tb {
+	padding-top: 1em !important;
+	padding-bottom: 1em !important;
+}
+
+.m-padded-tb-large {
+	padding-top: 2em !important;
+	padding-bottom: 2em !important;
+}
+
+.m-padded-tb-big {
+	padding-top: 3em !important;
+	padding-bottom: 3em !important;
+}
+
+.m-padded-tb-huge {
+	padding-left: 4em;
+	padding-right: 4em;
+
+}
+
+.m-padded-tb-massive {
+	padding-top: 10em !important;
+	padding-bottom: 10em !important;
+
+}
+
+.all_top {
+	margin-top: 1em !important;
+}
+
+
+.card_head {
+	font-family: simsun !important;
+	color: cadetblue !important;
+}
+
+.card_content {
+	font-size: 13px;
+	height: 13em;
+}
+
+.fanye {
+	font-size: 1.5em !important;
+	color: cadetblue;
+}
+
+.yeshu {
+	color: grey;
+}
+
+
+.article-responsive {
+	padding-top: 1em !important;
+	padding-left: 15em !important;
+	padding-right: 15em !important;
+	top: 1em !important;
+}
+
+.tag {
+	color: dimgray !important;
+	font-size: 14px !important;
+	padding-right: 1em;
+}
+.article_head {
+	color: dimgray !important;
+	font-family: simsun !important;
+	padding-bottom: 1em !important;
+}
+.article_contend {
+	font-size: 12px;
+	padding-bottom: 3em !important;
+
+}
+.article_message {
+	border-top-style: solid;
+	border-color: gainsboro;
+	border-width: thin;
+}
+a.article_hongxin:hover {
+	color: tomato !important;
+}
+.article_hongxin {
+	color: gray;
+
+}
+
+.comment_head{
+	color: dimgray !important;
+	font-size: 16px !important;
+}
+.comment_reply{
+	float: right;
+}
+.comment_liuyan
+{
+	color: dimgray !important;
+}
+.comment_reply_ID{
+	margin-right: 2em;
+}
+
+@media screen and (max-width:768px) {
+	.article-responsive{
+		padding-left: 1em !important;
+		padding-right: 1em !important;
+		top: 1em !important;
+	}
+	nav{
+		position: relative;
+	}
+}
+
+.type_tag{
+	margin-right: 1em !important;
+	margin-bottom: 1em !important;
+}
+.archive_month{
+	margin-top: 2em !important;
+	margin-bottom: 6em !important;
+	padding-left: 8em;
+	padding-right: 8em;
+}
+.archive_item{
+	color: gray !important;
+	font-size: 15px;
+}
+
+.letter_send{
+	padding-top: 10em ;
+	padding-left: 30em !important;
+	padding-right: 30em !important;
+}
+.layui-upload-file{
+	display:none;
+}

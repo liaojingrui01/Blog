@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<link href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet">
+		<link href="../static/css/me.css" rel="stylesheet" th:href="@{/css/me.css}">
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://cdn.bootcss.com/semantic-ui/2.3.1/semantic.js"></script>
+		<title>私信——呼呼噜噜噜 </title>
+	</head>
+	<body th:style="'background:url('+@{/images/blue-snow.png}+');'">
+		<form class="ui form letter_send" >
+		  <h2 class="ui dividing header ">发私信给呼呼噜噜噜</h2>
+		  <div class="two fields">
+		    <div class="field">
+		      <div class="two fields">
+		        <div class="field">
+
+					<input type="text" name="nickname" placeholder="昵称">
+		        </div>
+		        <div class="field">
+		          <input type="text" name="email" placeholder="邮箱">
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		  
+		  <div class="field">
+		    <textarea name="content" maxlength="500"></textarea>
+		  </div>
+			<div class="ui right aligned basic segment">
+				<button class=" ui basic submit button " id="letterpost-btn" type="button" >发送</button>
+			</div>
+		</form>
+
+		<script type="text/javascript" th:inline="javascript">
+            //私信表单验证
+            $('.ui.form').form({
+                fields: {
+                    content: {
+                        identifier: 'content',
+                        rules: [{
+                            type: 'empty',
+                            prompt: '请输入私信内容'
+                        }
+                        ]
+                    },
+                    name: {
+                        identifier: 'nickname',
+                        rules: [{
+                            type: 'empty',
+                            prompt: '请输入昵称'
+                        }]
+                    },
+                    email: {
+                        identifier: 'email',
+                        rules: [{
+                            type: 'empty',
+                            prompt: '请输入邮箱'
+                        }]
+                    },
+                }
+            });
+
+            $('#letterpost-btn').click(function () {
+                var boo = $('.ui.form').form('validate form');
+                if (boo==true) {
+                    console.log('校验成功');
+                    postLetter();
+                } else {
+                    console.log('校验失败');
+                }
+            });
+
+            function postLetter() {
+                var email = $("[name='email']").val();
+                var nickname= $("[name='nickname']").val();
+                var content= $("[name='content']").val();
+                $.ajax({
+                    type: "POST",
+                    url: "/letter",
+                    data:{
+                        'email':email,
+                        'nickname':nickname,
+                        'content':content,
+                    },
+                    success: function () {
+                        alert("发送成功");
+                        $("[name='content']").val('');
+                        $("[name='email']").attr("placeholder", "邮箱");
+                        $("[name='nickname']").attr("placeholder", "昵称");
+                    },
+                    error: function (e) {
+                        console.log(e)
+                    }
+                })
+            }
+		</script>
+	</body>
+</html>

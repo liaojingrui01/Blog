@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head th:replace="_fragments :: head(~{::title})">
+		<title>江南好，风景旧曾谙</title>
+	</head>
+	<body>
+
+
+		<div class="ui grid stackable divided" >
+			<!--导航-->
+			<div th:replace="_fragments :: menu()" >
+			</div>
+
+			<!--内容-->
+			<div class="twelve wide column">
+
+				<!--预览卡-->
+				<div class="ui grid all_top stackable" style="height:600px">
+					<div class="four wide column" th:each="blog : ${page.content}" th:if="${blog.published}">
+						<a class="ui card" href="blog.html" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+							<div class="content">
+								<div class="header">
+									<h3 class="card_head" th:text="${blog.title}">《公路的温柔》摘</h3>
+								</div>
+
+								<div class="description " style="padding-bottom: 2px">
+									<p class="card_content" th:text="|${blog.description}......|">一九九一年之后，广场上集会的老兵日益稀少，没人再邀他们摇着轮椅去给少先队讲座，他们保卫的玩意儿，在一片嘲笑声里崩溃了，他们守着酒精的余烬，指望着这火、这酒，能烈一些。</p>
+								</div>
+							</div>
+							<div class="extra content">
+								<div class="author ui grid ">
+									<div class="eight wide column"><i class="wait icon"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2019-3-3</span></div>
+									<div class="four wide column"><i class="heart icon"></i><span th:text="${blog.likeNum}">76</span></div>
+									<div class="four wide column"><i class="comment icon"></i><span th:text="${blog.commentNum}">9</span></div>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<!--底部分页-->
+				<div class="ui grid all_top stackable">
+					<div class="seven wide column"></div>
+					<div class="two wide column">
+						<div class="ui grid all_top">
+							<div class="five wide column">
+								<a href="#" th:href="@{/(page=${page.number}-1)}"  th:unless="${page.first}"><i class="angle left icon fanye"></i></a>
+							</div>
+							<div class="five wide column">
+								<span class="yeshu" th:text="${page.number+1}+'/'+${page.totalPages}"} style="letter-spacing: 2px"></span>
+							</div>
+							<div class="six wide column">
+								<a href="#" th:href="@{/(page=${page.number}+1)}"  th:unless="${page.last}"><i class="angle right icon fanye" ></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="seven wide column" ></div>
+
+				</div>
+
+			</div>
+
+			<!--空边-->
+			<div th:replace="_fragments :: right()" >
+			</div>
+		</div>
+
+		<th:block th:replace="_fragments :: script">
+		</th:block>
+
+
+	</body>
+</html>

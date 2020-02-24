@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="head(title)">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet" >
+    <link href="../static/css/me.css" rel="stylesheet" th:href="@{/css/me.css}">
+    <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/css/typo.css}">
+    <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}"/>
+    <title th:replace="${title}"></title>
+</head>
+<body>
+    <div class="ui grid stackable divided">
+        <!--导航-->
+        <div th:fragment="menu()" class="three wide column all_top" id="fragment">
+            <nav class="ui secondary vertical stackable menu" style="padding-left: 3em ">
+                <div class="ui segment item">
+                    <img class="ui medium circular image " th:src="@{/images/2.png}" >
+                    <a th:href="@{/admin/login}" target="_blank"><h class="item username" >呼呼噜噜噜</h></a>
+                </div>
+                <form name="search" action="#" th:action="@{/search}" method="post" target="_blank">
+                <div class="item">
+
+                    <div class="ui icon input">
+
+                            <input type="text" name="query" placeholder="搜索..." th:value="${query}">
+                            <i onclick="document.forms['search'].submit()" class="search link icon"></i>
+
+                    </div>
+
+                </div>
+                </form>
+                <a class="item leftmenu" th:href="@{/}">首页</a>
+                <a class="item leftmenu"  th:href="@{/letter}">私信 </a>
+                <a class="item leftmenu" th:href="@{/archive}">归档 </a>
+
+                <div class="item leftmenu" >
+                    <a th:href="@{/tag/-1}">目录</a>
+                    <div class=" menu ">
+                        <div th:each="tag : ${tags}">
+                            <a class="item leftmenu_mulu" href="#" th:href="@{/tag/{id}(id=${tag.id})}" style="padding-right: 1px" target="_blank" >&#12288;----&#12288;
+                                <span th:text="${tag.name}">方法论</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!--内容-->
+        <div class="twelve wide column">
+        </div>
+
+        <!--空边-->
+        <div class="column" th:fragment="right()">
+        </div>
+
+    </div>
+    <!--js-->
+    <th:block  th:fragment="script">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/semantic-ui/2.3.1/semantic.js"></script>
+        <script src="../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>
+
+    </th:block>
+
+    <script type="text/javascript" th:inline="javascript">
+
+    </script>
+</body>
+</html>

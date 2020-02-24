@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<link href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet">
+		<link href="../static/css/me.css" rel="stylesheet" th:href="@{/css/me.css}">
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<title>分类——呼呼噜噜噜</title>
+
+	</head>
+	<body>
+
+
+		<div class="ui grid stackable divided">
+			<!--导航-->
+			<div class="three wide column all_top" th:replace="_fragments :: menu()">
+				<nav class="ui secondary vertical stackable menu" style="padding-left: 3em ">
+					<div class="ui segment item">
+						<img class="ui medium circular image " th:src="@{/images/2.png}" >
+						<h class="item username" >呼呼噜噜噜</h>
+					</div>
+					<div class="item">
+						<div class="ui icon input">
+							<input type="text" placeholder="搜索...">
+							<i class="search link icon"></i>
+						</div>
+					</div>
+					<a class="item leftmenu" >首页</a>
+					<a class="item leftmenu"  >私信 </a>
+					<a class="item leftmenu" >归档 </a>
+					<a class="item leftmenu" >照片墙 </a>
+					<div class="item leftmenu" >目录
+						<div class=" menu ">
+							<div><a class="item leftmenu_mulu"  >&#12288;----&#12288;书摘</a></div>
+							<div><a class="item leftmenu_mulu">&#12288;----&#12288;随笔</a></div>
+							<div><a class="item leftmenu_mulu">&#12288;----&#12288;学习</a></div>
+						</div>
+					</div>
+				</nav>
+			</div>
+
+			<!--内容-->
+			<div class="twelve wide column"  >
+					<div class=" ">
+
+						<!--TAG表-->
+						<div class="ui basic segment ">
+							<div class="ui labeled button type_tag" th:each="tag : ${tagslist}">
+								<a class="ui basic button" href="#" th:href="@{/tag/{id}(id=${tag.id})}" th:classappend="${tag.id==activeTagId} ? 'teal'" >
+									<span th:text="${tag.name}">书摘</span>
+								</a>
+								<div class="ui basic teal left pointing label" th:text="${#arrays.length(tag.blogs)}">4</div>
+							</div>
+						</div>
+						<!--当前TAG表内容-->
+						<div class="ui grid stackable"  style="height:500px">
+							
+							<div class="four wide column" th:each="blog : ${page.content}">
+								<a class="ui card" href="blog.html" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+									<div class="content">
+										<div class="header">
+											<h3 class="card_head" th:text="${blog.title}">《公路的温柔》摘</h3>
+										</div>
+							
+										<div class="description ">
+											<p class="card_content" th:text="|${blog.description}......|">一九九一年之后，广场上集会的老兵日益稀少，没人再邀他们摇着轮椅去给少先队讲座，他们保卫的玩意儿，在一片嘲笑声里崩溃了，他们守着酒精的余烬，指望着这火、这酒，能烈一些。</p>
+										</div>
+									</div>
+									<div class="extra content">
+										<div class="author ui grid ">
+											<div class="eight wide column"><i class="wait icon"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2019-3-3</span></div>
+											<div class="four wide column"><i class="heart icon"></i><span th:text="${blog.likeNum}">76</span></div>
+											<div class="four wide column"><i class="comment icon"></i><span th:text="${blog.commentNum}">9</span></div>
+										</div>
+									</div>
+								</a>
+							</div>
+							
+						</div>
+						
+						<!--底部分页-->
+						<div class="ui grid all_top stackable">
+								
+								
+							    <div class="seven wide column"></div>
+							    <div class="two wide column">
+									<div class="ui grid all_top">
+										<div class="five wide column">
+											<a href="#" th:href="@{/(page=${page.number}-1)}"  th:unless="${page.first}"><i class="angle left icon fanye"></i></a>
+										</div>
+										<div class="five wide column">
+											<p class="yeshu" th:text="${page.number+1}+'/'+${page.totalPages}"}>1/2</p>
+										</div>
+										<div class="six wide column">
+											<a href="#" th:href="@{/(page=${page.number}+1)}"  th:unless="${page.last}"><i class="angle right icon fanye" ></i></a>
+										</div>
+									</div>															
+								</div>
+							    <div class="seven wide column" ></div>
+						
+						</div>
+										
+					</div>
+			</div>
+			<!--空边-->
+			<div class="column" th:replace="_fragments :: right()" >
+			</div>
+
+		</div>
+
+		<th:block th:replace="_fragments :: script">
+		</th:block>
+
+
+	</body>
+</html>
